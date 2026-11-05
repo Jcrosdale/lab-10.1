@@ -58,7 +58,13 @@ const Counter = () => {
             if (event.key === 'ArrowUp') {
                 increment();
             }
-        }
+
+            if (event.key === 'ArrowDown') {
+                decrement();
+            }
+        };
+
+        
     }, [count, step]);
 
     return (
