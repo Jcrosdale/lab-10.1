@@ -66,6 +66,11 @@ const Counter = () => {
         
         window.addEventListener('keydown', handleKeyDown);
 
+        // Event listener clean up
+        return() => {
+            window.removeEventListener('keydown', handleKeyDown);
+        }
+
     }, [count, step]);
 
     return (
