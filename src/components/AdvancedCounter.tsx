@@ -52,6 +52,15 @@ const Counter = () => {
     // use effect
     // };
 
+    // Key down effect
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'ArrowUp') {
+                increment();
+            }
+        }
+    }, [count, step]);
+
     return (
         <div>
             <p>Counter</p>
