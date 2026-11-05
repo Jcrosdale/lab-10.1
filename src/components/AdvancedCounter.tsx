@@ -30,8 +30,8 @@ const Counter = () => {
 
     // Decrement Button: A button to decrease the count by 1.
     const decrement = () => {
-        setCount(count - 1); // <-- the argument is the new value
-
+        setSavedCount(prev => [...prev, count]);
+        setCount(prev => prev - step); // <-- the argument is the new value
     };
 
     // Reset button
