@@ -24,7 +24,8 @@ const Counter = () => {
 
     // Increment Button: A button to increase the count by 1.
     const increment = () => {
-        setCount(count + 1); // <-- the argument is the new value
+        setSavedCount(prev => [...prev, count]);
+        setCount(prev => prev + step); // <-- the argument is the new value
     };
 
     // Decrement Button: A button to decrease the count by 1.
