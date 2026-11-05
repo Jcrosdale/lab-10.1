@@ -5,12 +5,22 @@ const Counter = () => {
     // display current count: Show the current count, initialized to 0.
     const [count, setCount] = useState<number>(0);
     const [savedCount, setSavedCount] = useState<number[]>([]);
+    const [step, setStep] = useState<number>(1);
 
-    // Effect
+    // Effect for components
     // Changes saved.
     // Saving to localStorage...
-    // Similar to debouncing activity
-    // Separate useEffect
+    useEffect(() => {
+        const saved = localStorage.getItem('counter');
+        if (saved !== null) {
+            setCount(Number(saved));
+        }
+    }, []);
+
+    // Second effect for changes
+    useEffect(() => {
+        localStorage.setItem('counter', count.toString());
+    }, [count]);
 
     // Increment Button: A button to increase the count by 1.
     const increment = () => {
@@ -26,6 +36,7 @@ const Counter = () => {
     // Reset button
     const resetCount = () => {
         setCount(0);
+        setSavedCount([]);
     };
 
     // Count history 
@@ -44,18 +55,25 @@ const Counter = () => {
         <div>
             <p>Counter</p>
             <h1>Current Count: {count}</h1>
+
             <button onClick={decrement}>Decrement</button>
             <button onClick={increment}>Increment</button>
             <button onClick={resetCount}>Reset</button>
 
-            <p>Step Value: { }</p>
+            <label>Step Value:</label>
+            <input 
+            type='number'
+            min='1'
+            value={step}
+            onChange={(event) => setStep(Number(event.target.value))}
+            />
 
             <p>Count History:</p>
             <ul>
                 {count}
                 <p>--------------</p>
-                {savedCount.map((count, index) => (
-                    <li key={index}>{count}</li>
+                {savedCount.map((previousCount, index) => (
+                    <li key={index}>{previousCount}</li>
                 ))}
             </ul>
 
