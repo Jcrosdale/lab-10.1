@@ -63,8 +63,9 @@ const Counter = () => {
                 decrement();
             }
         };
-
         
+        window.addEventListener('keydown', handleKeyDown);
+
     }, [count, step]);
 
     return (
