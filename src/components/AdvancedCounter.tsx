@@ -93,8 +93,6 @@ const Counter = () => {
 
             <p>Count History:</p>
             <ul>
-                {count}
-                <p>--------------</p>
                 {savedCount.map((previousCount, index) => (
                     <li key={index}>{previousCount}</li>
                 ))}
