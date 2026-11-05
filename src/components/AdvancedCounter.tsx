@@ -82,13 +82,13 @@ const Counter = () => {
             <button onClick={increment}>Increment</button>
             <button onClick={resetCount}>Reset</button>
 
-            <label>Step Value:</label>
+            <label htmlFor='step'>Step Value:</label>
             <input
             id='step' 
             type='number'
             min='1'
             value={step}
-            onChange={(event) => setStep(Number(event.target.value))}
+            onChange={(event) => setStep(Math.max(1, Number(event.target.value)))}
             />
 
             <p>Count History:</p>
