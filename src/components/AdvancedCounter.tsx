@@ -83,7 +83,8 @@ const Counter = () => {
             <button onClick={resetCount}>Reset</button>
 
             <label>Step Value:</label>
-            <input 
+            <input
+            id='step' 
             type='number'
             min='1'
             value={step}
